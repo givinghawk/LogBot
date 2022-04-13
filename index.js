@@ -6,8 +6,6 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 // get the config from config.json
 const config = require('./config.json');
-// import Canvas
-const Canvas = require('canvas');
 // import http
 const http = require('http');
 // login to discord
@@ -87,7 +85,7 @@ function checkFileExists(file) {
 client.on('message', message => {
     // if file does not exist
     if (!checkFileExists("./logs/" + message.guild.id + '.txt')) {
-        fs.writeFileSync("./logs/" + message.guild.id + ".txt", JSON.stringify("Start of logs\n", null, 4));
+        fs.writeFileSync("./logs/" + message.guild.id + ".txt", JSON.stringify("", null, 4));
     }
     checkFileSize("./logs/" + message.guild.id + '.txt');
     // get user tag
@@ -98,7 +96,7 @@ client.on('message', message => {
     // get the servers id
     var serverid = message.guild.id;
     // if the message is not from the bot, add the message to messages.txt
-    fs.appendFile("./logs/" + serverid + '.txt', date + ' ' + tag + ': ' + message.content + '\n', (err) => {
+    fs.appendFile("./logs/" + serverid + '.txt', tag + ': ' + message.content + '\n', (err) => {
         if (err) throw err;
     });
     // set the prefix to the prefix in config.json
@@ -128,7 +126,7 @@ client.on('message', message => {
     if (message.content == prefix + 'dump' && message.author.id == config.ownerid) {
         // send the file to hastebin
         // store the last 100 lines of the file
-        var lines = fs.readFileSync("./logs/" + message.guild.id + '.txt').toString().split('\n').slice(-501);
+        var lines = fs.readFileSync("./logs/" + message.guild.id + '.txt').toString().split('\n').slice(-101);
         // replace every "ॐ" with a newline
         var logs = lines.join('\n');
         // send the archive to hastebin
