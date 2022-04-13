@@ -51,7 +51,7 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
     // get the servers id
     var serverid = newMessage.guild.id;
     // if the message is not from the bot, add the message to messages.txt
-    fs.appendFile("./logs/" + serverid + '.txt', date + ' ' + tag + ': ' + oldMessage.content + ' EDITED TO ' + newMessage.content + '\n', (err) => {
+    fs.appendFile("./logs/" + serverid + '.txt', tag + ': ' + oldMessage.content + ' EDITED TO ' + newMessage.content + '\n', (err) => {
         if (err) throw err;
     });
 });
