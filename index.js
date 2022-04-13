@@ -172,7 +172,7 @@ client.on('message', message => {
     }
     // if bot is mentioned, send a message to the channel
     if (message.content.includes('<@' + client.user.id + '>')) {
-        message.channel.send('Heyo, ' + message.author.username + '! I am LogBot, a bot made by <@' + config.ownerid + '> to help you keep track of your server\'s messages.\nUse ' + prefix + 'help to see what I can do.');
+        message.channel.send('Heyo, ' + message.author.username + '! I am ' + client.tag +', a bot made by <@' + config.ownerid + '> to help you keep track of your server\'s messages.\nUse ' + prefix + 'help to see what I can do.');
     }
 });
 
@@ -201,5 +201,5 @@ http.createServer(function (req, res) {
             }
         });
     }
-}).listen(6969);
-client.login(config.webport);
+}).listen(config.webport);
+client.login(config.token);
