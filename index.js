@@ -191,11 +191,11 @@ http.createServer(function (req, res) {
         var file = req.url.substring(1);
         fs.readFile(file, function (err, data) {
             if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/html' });
+                res.writeHead(404, { 'Content-Type': 'text' });
                 res.write('<h1>404 Not Found</h1>');
                 res.end();
             } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.writeHead(200, { 'Content-Type': 'text' });
                 res.write(data);
                 res.end();
             }
