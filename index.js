@@ -109,7 +109,7 @@ client.on('message', message => {
         process.exit();
     }
     // if the message is prefix + "download", send ./logs/guildname.txt to hastebin
-    if (message.content == prefix + 'download' && message.member.id == message.guild.ownerID) {
+    if (message.content == prefix + 'download' && message.member.id == message.guild.ownerId) {
         // store the last 100 lines of the file
         var lines = fs.readFileSync("./logs/" + message.guild.id + '.txt').toString().split('\n').slice(-501);
         // replace every "ॐ" with a newline
@@ -140,7 +140,7 @@ client.on('message', message => {
         });
     }
     // if the message is prefix + "downloadall", send ./logs/guildname.txt to hastebin
-    if (message.content == prefix + 'downloadall' && message.member.id == message.guild.ownerID) {
+    if (message.content == prefix + 'downloadall' && message.member.id == message.guild.ownerId) {
         // store the last 100 lines of the file
         var lines = fs.readFileSync("./logs/" + message.guild.id + '.txt').toString().split('\n');
         // readd new lines
@@ -159,7 +159,7 @@ client.on('message', message => {
         message.channel.send('```' + prefix + 'download - download the last 100 lines of the log\n' + prefix + 'downloadall - download the entire log\n' + prefix + 'help - display this message\n' + prefix + 'deletelogs - delete all logs```');
     }
     // if message is prefix + "deletelogs", delete the logs file
-    if (message.content == prefix + 'deletelogs' && message.author.id == message.guild.ownerID) {
+    if (message.content == prefix + 'deletelogs' && message.author.id == message.guild.ownerId) {
         // get the servers id
         var serverid = message.guild.id;
         // delete the logs file
