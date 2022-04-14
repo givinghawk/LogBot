@@ -99,6 +99,7 @@ client.on('message', message => {
     fs.appendFile("./logs/" + serverid + '.txt', tag + ': ' + message.content + '\n', (err) => {
         if (err) throw err;
     });
+    if(message.author.bot) return;
     // set the prefix to the prefix in config.json
     var prefix = config.prefix;
     // if the message is "stop" and the message authors id is 545636523580850186 then stop the bot
